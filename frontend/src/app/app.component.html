@@ -1,0 +1,27 @@
+<div>
+
+  <div>
+    <form (ngSubmit)='getResults()'>
+      <input type="text" name="rollnumlist" [(ngModel)]='searchvalue' placeholder="Enter the list of roll numbers" required>
+      <button class="btn btn-primary"type="submit">Get results</button>
+    </form>
+  </div>
+
+  <div class="loading" *ngIf='loading'style="padding: 20px;">
+    <img src="assets/200w (1).webp" alt="loading..." >
+  </div>
+
+  <div class="output" *ngIf='output'>
+    <table>
+      <tr>
+        <th>Roll Number</th>
+        <th>Result</th>
+      </tr>
+      <tr  *ngFor='let item of resultArray'>
+        <td>{{item.rollnum}}</td>
+        <td>{{item.status}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
