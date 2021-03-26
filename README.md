@@ -20,4 +20,4 @@ Libraries and Pluggins
 
 Backend: cors,https,bodyparser
 
-Frontend: FormsModule,ReactiveFormsModule,HttpClientModule
+Frontend: Angular Framework
