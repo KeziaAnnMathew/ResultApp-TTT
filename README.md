@@ -18,6 +18,6 @@ How to Implement
 Libraries and Pluggins
 
 
-Backend: cors,https,bodyparser
+Backend: Express,Node
 
 Frontend: Angular Framework
