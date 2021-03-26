@@ -4,15 +4,16 @@ This is a basic app which takes in a list of comma seprated roll numbers and pro
 
 How to Implement
 
-Clone the repository
+1.Clone the repository
 
-navigate to the folder
+2.navigate to the folder
 
-run npm install on both frontend and backend folders seperately.
+3.run npm install on both frontend and backend folders seperately.
 
-Run ng serve on frontend
+4.Run ng serve on frontend
 
-Run node app.js on backend
+5.Run node app.js on backend
+
 
 Libraries and Pluggins
 
