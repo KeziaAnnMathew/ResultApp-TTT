@@ -19,24 +19,41 @@ export class AppComponent {
   //assigning a variable to get the search parameter
   searchvalue:any;
   rollnumlist=[];
-  i=0;
+  i=0;;
+  regex=/^\d+(,\d+)*$/;
   loading:Boolean=false;
-  output:Boolean=false
+  output:Boolean=false;
+  err:Boolean=false;
   constructor(private results:ResultsService){}
   //the function which calls and pass value to the service
   getResults(){
-    this.loading=true;
-    this.output=false;
-    this.rollnumlist=this.searchvalue.split(',');
-    this.results.getResultsService(this.rollnumlist)
-    .subscribe((val:any)=>{
+    if(!this.searchvalue.match(this.regex)){
+      this.searchvalue='';
+      this.output=false;
       this.loading=false;
-      this.output=true;
-      for(this.i=0;this.i<val.table.length;this.i++){
-        this.resultArray.push({rollnum:val.list[this.i],status:val.table[this.i]})
-      }
-    });
-    this.searchvalue='';
-    this.resultArray=[];
+      alert('Invalid input')
+    }
+    else{
+      this.loading=true;
+      this.output=false;
+      this.rollnumlist=this.searchvalue.split(',');
+      this.results.getResultsService(this.rollnumlist)
+      .subscribe((val:any)=>{
+        if(val.error){
+          this.err=true
+        }
+        else{
+          this.loading=false;
+          this.output=true;
+          for(this.i=0;this.i<val.table.length;this.i++){
+            this.resultArray.push({rollnum:val.list[this.i],status:val.table[this.i]})
+          }
+        }
+       
+      });
+      this.searchvalue='';
+      this.resultArray=[];
+    }
+   
   }
 }

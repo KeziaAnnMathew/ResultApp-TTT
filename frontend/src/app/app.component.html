@@ -10,8 +10,10 @@
   <div class="loading" *ngIf='loading'style="padding: 20px;">
     <img src="assets/200w (1).webp" alt="loading..." >
   </div>
+  
 
   <div class="output" *ngIf='output'>
+    <div *ngIf="err"><H3>Cannot Get Results</H3></div>
     <table>
       <tr>
         <th>Roll Number</th>

@@ -19,7 +19,6 @@ app.post('/getResults',function(req,res){
 
 //External api call and response back to client
 function getresultstatus(list,response){
-    
          for (count=0;count<list.length;count++){
              https.get(`https://terriblytinytales.com/testapi?rollnumber=${list[count]}`,function(res){
                 let data='';
@@ -29,13 +28,13 @@ function getresultstatus(list,response){
                 res.on('end',()=>{
                     table.push(data)
                     if(table.length==list.length){
-                        console.log(table)
                         response.send({table:table,list:list}) 
                         table=[];
                     }           
                 })  
-            }).on('error',()=>{
+            }).on('error',(error)=>{
                 console.log(error)
+                response.send({error:error}) 
             })          
         }
 }
