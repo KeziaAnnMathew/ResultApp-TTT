@@ -29,6 +29,7 @@ function getresultstatus(list,response){
                 res.on('end',()=>{
                     table.push(data)
                     if(table.length==list.length){
+                        console.log(table)
                         response.send({table:table,list:list}) 
                         table=[];
                     }           
